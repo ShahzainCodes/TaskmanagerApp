@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Task Manager</h1>
+
+      <form class="task-form" action="/create_task" method="post">
+        <input name="title" type="text" placeholder="Task Name" required />
+        <textarea
+          name="details"
+          placeholder="Task Description"
+          required
+        ></textarea>
+        <button type="submit">Create Task</button>
+      </form>
+
+      <div class="cards">
+        <% if (files.length > 0) { %> <% files.forEach((file) => { %>
+        <div class="card">
+          <h2><%= file %></h2>
+
+          <div class="btns">
+            <a class="readMorebtn" href="/showtask/<%=file%>">Read File</a>
+
+            <a class="editbtn" href="/edit/<%=file%>">Edit</a>
+            <a class="deletebtn" href="/deleteFile/<%=file%>">Delete</a>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <p class="empty">No task added</p>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
